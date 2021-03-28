@@ -40,11 +40,20 @@ export default {
   },
   methods: {
     random() {
+      const idx = Math.floor(Math.random() * this.images.length);
+      this.selectedImage = this.images[idx];
+      this.selectedName = this.names[idx];
+      this.isActive = false;
+    },
+    test() {
       for (let i = 0; i < this.images.length; i++) {
         setTimeout(() => {
           this.isActive = true;
           this.selectedImage = this.images[i];
         }, i * 200);
+        if (i >= this.images.length) {
+          this.isActive = false;
+        }
       }
     },
   },
