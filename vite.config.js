@@ -1,5 +1,3 @@
 module.exports = {
-    hmr: {
-        port: 8080
-    }
+    hmr: false
 }
