@@ -3,7 +3,9 @@
     <h1>KinraiDee</h1>
     <img v-bind:src="selectedImage" class="responsive" />
     <h3>{{ selectedName }}</h3>
-    <button v-on:click="random()" class="button">random</button>
+    <button :disabled="isActive" v-on:click="random()" v-bind:class="{'button': !isActive, 'button-disable': isActive}">
+      random
+    </button>
     <div class="border2">ADS</div>
   </div>
 </template>
@@ -29,6 +31,7 @@ export default {
       ],
       selectedImage: "pic/food.webp",
       selectedName: "ชื่อ อาหาร",
+      isActive: false,
     };
   },
   methods: {
@@ -38,13 +41,15 @@ export default {
         const next = it.next();
         if (!next.done) {
           this.selectedImage = next.value;
+          this.isActive = true;
         } else {
           clearInterval(int);
           const idx = Math.floor(Math.random() * this.images.length);
           this.selectedImage = this.images[idx];
           this.selectedName = this.names[idx];
+          this.isActive = false;
         }
-      }, 1000);
+      }, 300);
     },
   },
 };
@@ -96,5 +101,18 @@ export default {
   margin: 4px 2px;
   cursor: pointer;
   background-color: #008cba;
+}
+
+.button-disable {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: gray;
 }
 </style>
