@@ -44,7 +44,7 @@ export default {
           this.selectedImage = this.images[idx];
           this.selectedName = this.names[idx];
         }
-      }, 100);
+      }, 1000);
     },
   },
 };
