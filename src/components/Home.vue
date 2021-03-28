@@ -11,17 +11,40 @@
 export default {
   data() {
     return {
-      images: ["pic/food1.webp", "pic/food2.jpg", "pic/food3.jpg"],
-      names: ["กระเพรา", "ก๋ยวเตี๋ยว", "ผัดไท"],
+      images: [
+        "pic/food1.webp",
+        "pic/food2.jpg",
+        "pic/food3.jpg",
+        "pic/food4.jpg",
+        "pic/food5.jpg",
+        "pic/food6.jpg",
+      ],
+      names: [
+        "กระเพรา",
+        "ก๋วยเตี๋ยว",
+        "ผัดไท",
+        "ต้มยำกุ้ง",
+        "ส้มตำ",
+        "ไก่ย่าง",
+      ],
       selectedImage: "pic/food.webp",
       selectedName: "ชื่อ อาหาร",
     };
   },
   methods: {
     random() {
-      const idx = Math.floor(Math.random() * this.images.length);
-      this.selectedImage = this.images[idx];
-      this.selectedName = this.names[idx];
+      const it = this.images[Symbol.iterator]();
+      const int = setInterval(() => {
+        const next = it.next();
+        if (!next.done) {
+          this.selectedImage = next.value;
+        } else {
+          clearInterval(int);
+          const idx = Math.floor(Math.random() * this.images.length);
+          this.selectedImage = this.images[idx];
+          this.selectedName = this.names[idx];
+        }
+      }, 100);
     },
   },
 };
