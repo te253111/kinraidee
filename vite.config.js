@@ -1,7 +1,5 @@
-export default {
-    server: {
-        hmr: {
-            overlay :false
-        }
+module.exports = {
+    hmr: {
+        port: 8080
     }
-  }
+}
