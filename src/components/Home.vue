@@ -3,7 +3,11 @@
     <h1>KinraiDee</h1>
     <img v-bind:src="selectedImage" class="responsive" />
     <h3>{{ selectedName }}</h3>
-    <button :disabled="isActive" v-on:click="random()" v-bind:class="{'button': !isActive, 'button-disable': isActive}">
+    <button
+      :disabled="isActive"
+      v-on:click="random()"
+      v-bind:class="{ button: !isActive, 'button-disable': isActive }"
+    >
       random
     </button>
     <div class="border2">ADS</div>
@@ -36,20 +40,12 @@ export default {
   },
   methods: {
     random() {
-      const it = this.images[Symbol.iterator]();
-      const int = setInterval(() => {
-        const next = it.next();
-        if (!next.done) {
-          this.selectedImage = next.value;
+      for (let i = 0; i < this.images.length; i++) {
+        setTimeout(() => {
           this.isActive = true;
-        } else {
-          clearInterval(int);
-          const idx = Math.floor(Math.random() * this.images.length);
-          this.selectedImage = this.images[idx];
-          this.selectedName = this.names[idx];
-          this.isActive = false;
-        }
-      }, 200);
+          this.selectedImage = this.images[i];
+        }, i * 200);
+      }
     },
   },
 };
