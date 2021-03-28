@@ -49,7 +49,7 @@ export default {
           this.selectedName = this.names[idx];
           this.isActive = false;
         }
-      }, 300);
+      }, 100);
     },
   },
 };
