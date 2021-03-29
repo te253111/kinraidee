@@ -14,25 +14,14 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
+  created() {
+    axios.get("data.json").then((response) => (this.items = response.data));
+  },
   data() {
     return {
-      images: [
-        "pic/food1.webp",
-        "pic/food2.jpg",
-        "pic/food3.jpg",
-        "pic/food4.jpg",
-        "pic/food5.jpg",
-        "pic/food6.jpg",
-      ],
-      names: [
-        "กระเพรา",
-        "ก๋วยเตี๋ยว",
-        "ผัดไท",
-        "ต้มยำกุ้ง",
-        "ส้มตำ",
-        "ไก่ย่าง",
-      ],
+      items: [],
       selectedImage: "pic/food.webp",
       selectedName: "ชื่อ อาหาร",
       isActive: false,
@@ -40,21 +29,22 @@ export default {
   },
   methods: {
     random() {
-      const idx = Math.floor(Math.random() * this.images.length);
-      this.selectedImage = this.images[idx];
-      this.selectedName = this.names[idx];
-      this.isActive = false;
-    },
-    test() {
-      for (let i = 0; i < this.images.length; i++) {
-        setTimeout(() => {
-          this.isActive = true;
-          this.selectedImage = this.images[i];
-        }, i * 200);
-        if (i >= this.images.length) {
+      const idx = Math.floor(Math.random() * this.items.length);
+      this.selectedImage = "pic/Loading.gif";
+      this.isActive = true;
+      let timer = 0;
+      let interval = setInterval(() => {
+        if (timer == this.items.length - 1) {
+          this.selectedImage = this.items[idx].img;
+          this.selectedName = this.items[idx].name;
           this.isActive = false;
+          clearInterval(interval);
+        } else {
+          this.selectedName = this.items[timer].name;
+          console.log(timer);
+          timer++;
         }
-      }
+      }, 200);
     },
   },
 };
