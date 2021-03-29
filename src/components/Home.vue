@@ -10,6 +10,10 @@
     >
       random
     </button>
+    <hr />
+    <input type="checkbox" value="01" v-model="checkedNames" />ประเภทผัด
+    <input type="checkbox" value="02" v-model="checkedNames" />ประเภทน้ำ
+    <input type="checkbox" value="03" v-model="checkedNames" />อื่นๆ
     <div class="border2">ADS</div>
   </div>
 </template>
@@ -22,6 +26,9 @@ export default {
   data() {
     return {
       items: [],
+      buffitems: [],
+      checkedNames: [],
+      checked: true,
       selectedImage: "pic/food.webp",
       selectedName: "ชื่อ อาหาร",
       isActive: false,
@@ -29,22 +36,27 @@ export default {
   },
   methods: {
     random() {
-      const idx = Math.floor(Math.random() * this.items.length);
+      this.buffitems = this.filteredItems();
+      const idx = Math.floor(Math.random() * this.buffitems.length);
       this.selectedImage = "pic/Loading.gif";
       this.isActive = true;
       let timer = 0;
       let interval = setInterval(() => {
-        if (timer == this.items.length - 1) {
-          this.selectedImage = this.items[idx].img;
-          this.selectedName = this.items[idx].name;
+        if (timer == this.buffitems.length - 1) {
+          this.selectedImage = this.buffitems[idx].img;
+          this.selectedName = this.buffitems[idx].name;
           this.isActive = false;
           clearInterval(interval);
         } else {
-          this.selectedName = this.items[timer].name;
+          this.selectedName = this.buffitems[timer].name;
           console.log(timer);
           timer++;
         }
       }, 200);
+    },
+    filteredItems() {
+      if (!this.checkedNames.length) return this.items;
+      return this.items.filter((j) => this.checkedNames.includes(j.type));
     },
   },
 };
