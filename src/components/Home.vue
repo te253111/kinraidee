@@ -1,20 +1,30 @@
 <template>
-  <div class="border">
-    <h1>KinraiDee</h1>
-    <img v-bind:src="selectedImage" class="responsive" />
-    <h3>{{ selectedName }}</h3>
-    <button
-      :disabled="isActive"
-      v-on:click="random()"
-      v-bind:class="{ button: !isActive, 'button-disable': isActive }"
-    >
-      random
-    </button>
-    <hr />
-    <input type="checkbox" value="01" v-model="checkedNames" />ประเภทผัด
-    <input type="checkbox" value="02" v-model="checkedNames" />ประเภทน้ำ
-    <input type="checkbox" value="03" v-model="checkedNames" />อื่นๆ
-    <div class="border2">ADS</div>
+  <div class="q-pa-md border">
+    <q-card class="my-card">
+      <q-card-section>
+        <div class="text-h4 maginB">KinraiDee</div>
+        <q-img
+          v-bind:src="selectedImage"
+          spinner-color="white"
+          class="responsive maginB"
+        />
+        <div class="text-h6 maginB">{{ selectedName }}</div>
+        <q-btn
+          :disabled="isActive"
+          v-on:click="random()"
+          color="primary"
+          label="Random"
+          class="maginB"
+        />
+        <hr />
+        <div class="q-gutter-sm">
+          <q-checkbox v-model="checkedNames" val="01" label="ประเภทผัด" />
+          <q-checkbox v-model="checkedNames" val="02" label="ประเภทน้ำ" />
+          <q-checkbox v-model="checkedNames" val="03" label="อื่นๆ" />
+        </div>
+        <q-banner class="bg-grey-3"> ADS </q-banner>
+      </q-card-section>
+    </q-card>
   </div>
 </template>
 <script>
@@ -61,34 +71,14 @@ export default {
   },
 };
 </script>
-
 <style>
 .border {
-  border: 1px solid black;
-  border-radius: 5px;
   max-width: 1280px;
   height: auto;
   margin: 0 auto;
 }
 
-.border2 {
-  border: 1px solid black;
-  border-radius: 5px;
-  max-width: 1280px;
-  height: 100px;
-  background-color: gray;
-  color: white;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 90px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
 .responsive {
-  width: 100%;
   height: 300px;
   max-width: 300px;
   position: relative;
@@ -97,29 +87,7 @@ export default {
   border: 1px solid black;
 }
 
-.button {
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  background-color: #008cba;
-}
-
-.button-disable {
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  background-color: gray;
+.maginB {
+  margin-bottom: 10px;
 }
 </style>
