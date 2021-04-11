@@ -7,7 +7,6 @@
     <p class="red">Normal border</p>
   </div>
 </template>
-
 <script>
 import { matHome } from "@quasar/extras/material-icons";
 import { matMenu } from "@quasar/extras/material-icons";
