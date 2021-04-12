@@ -44,28 +44,3 @@ export default {
   },
 };
 </script>
-
-<!--export default {
-  components: { NavMenu },
-  created() {
-    axios.get("data.json").then((response) => (this.datas = response.data));
-  },
-  mounted() {
-    this.randomVote();
-  },
-  data() {
-    return {
-      datas: [],
-      buffitems: [],
-    };
-  },
-  methods: {
-    randomVote() {
-      const idx = Math.floor(Math.random() * this.datas.length);
-      this.buffitems.push(this.datas[idx].name);
-      this.datas.slice(idx);
-    },
-  },
-};
-</script>
--->
