@@ -1,0 +1,90 @@
+.normal {
+  border: 1px solid orangered;
+  border-radius: 10px;
+  width: auto;
+  height: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  vertical-align: middle;
+}
+
+.normalVote {
+  border: 1px solid orangered;
+  border-radius: 10px;
+  width: auto;
+  height: 40px;
+  margin-left: 50px;
+  margin-right: 50px;
+  vertical-align: middle;
+}
+
+.red {
+  border: 1px solid orangered;
+  background-color: orangered;
+  color: white;
+  border-radius: 10px;
+  width: auto;
+  height: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  text-align: center;
+}
+
+.fontred {
+  color: orangered;
+  text-decoration: underline;
+}
+
+.responsive {
+  height: 200px;
+  max-width: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+hr.line {
+  border: 3px solid black;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav {
+  width: auto;
+  height: 50px;
+  margin-top: 32px;
+}
+
+.ads {
+  width: auto;
+  height: 200px;
+  margin-top: 64px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.mt16 {
+  margin-top: 16px;
+}
+
+.mt32 {
+  margin-top: 32px;
+}
+
+.font14 {
+  font-size: 14px;
+}
+
+.font18 {
+  font-size: 18px;
+}
+
+.font24 {
+  font-size: 24px;
+}
