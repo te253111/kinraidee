@@ -21,7 +21,7 @@ export default {
     axios.get("data.json").then((response) => (this.datas = response.data));
   },
   mounted() {
-    this.randomVote();
+    this.random();
   },
   data() {
     return {
