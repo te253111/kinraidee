@@ -24,13 +24,17 @@ export default {
     const buffitems = reactive([]);
 
     onMounted(() => {
-      RandomVote();
+      axios.get('data.json').then((response) => {
+        Object.assign(datas, response.data);
+        RandomVote();
+      });
     });
 
     const RandomVote = () => {
-      axios.get('data.json').then((response) => {
-        Object.assign(datas, response.data);
-      });
+      let idx = Math.floor(Math.random() * datas.length);
+      const obj = datas[idx];
+      buffitems.push(datas[idx].name);
+      Object.assign(datas, [...datas.filter((r) => r.name != obj.name)]);
     };
 
     return {
@@ -40,3 +44,28 @@ export default {
   },
 };
 </script>
+
+<!--export default {
+  components: { NavMenu },
+  created() {
+    axios.get("data.json").then((response) => (this.datas = response.data));
+  },
+  mounted() {
+    this.randomVote();
+  },
+  data() {
+    return {
+      datas: [],
+      buffitems: [],
+    };
+  },
+  methods: {
+    randomVote() {
+      const idx = Math.floor(Math.random() * this.datas.length);
+      this.buffitems.push(this.datas[idx].name);
+      this.datas.slice(idx);
+    },
+  },
+};
+</script>
+-->
