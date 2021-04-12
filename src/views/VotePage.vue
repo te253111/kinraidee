@@ -23,11 +23,15 @@ export default {
     const datas = reactive([]);
     const buffitems = reactive([]);
 
-    onMounted(() => {
-      axios.get('data.json').then((response) => {
+    async function GetDatas() {
+      await axios.get('data.json').then((response) => {
         Object.assign(datas, response.data);
-        RandomVote();
       });
+    }
+
+    onMounted(async () => {
+      await GetDatas();
+      RandomVote();
     });
 
     const RandomVote = () => {
