@@ -12,29 +12,31 @@
   </div>
 </template>
 <script>
-import NavMenu from "../components/NavMenu.vue";
-import "../styles/main.css";
-import axios from "axios";
+import NavMenu from '../components/NavMenu.vue';
+import '../styles/main.css';
+import axios from 'axios';
+import { onMounted, reactive } from 'vue';
+
 export default {
   components: { NavMenu },
-  created() {
-    axios.get("data.json").then((response) => (this.datas = response.data));
-  },
-  mounted() {
-    this.randomVote();
-  },
-  data() {
-    return {
-      datas: [],
-      buffitems: [],
+  setup() {
+    const datas = reactive([]);
+    const buffitems = reactive([]);
+
+    onMounted(() => {
+      RandomVote();
+    });
+
+    const RandomVote = () => {
+      axios.get('data.json').then((response) => {
+        Object.assign(datas, response.data);
+      });
     };
-  },
-  methods: {
-    randomVote() {
-      const idx = Math.floor(Math.random() * this.datas.length);
-      this.buffitems.push(this.datas[idx].name);
-      this.datas.slice(idx);
-    },
+
+    return {
+      datas,
+      buffitems,
+    };
   },
 };
 </script>
