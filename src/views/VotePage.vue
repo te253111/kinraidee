@@ -8,7 +8,7 @@
     <router-link to="/SaveShare" class="link">
       <div class="red mt32 font18">บันทึกและแชร์</div>
     </router-link>
-    <div class="red mt32 font18" @click="Save()">test</div>
+    <div class="red mt32 font18" @click="save()">test</div>
     <q-banner class="bg-grey-3 ads"> ADS </q-banner>
   </div>
 </template>
