@@ -41,7 +41,14 @@ export default {
       }
     };
     function save() {
-      console.log("test");
+      db.collection("vote")
+        .add(buffitems)
+        .then(() => {
+          console.log("ok");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
     return {
       save,
