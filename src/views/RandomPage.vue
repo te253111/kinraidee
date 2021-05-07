@@ -1,20 +1,29 @@
 <template>
   <div>
     <NavMenu />
-    <q-img
-      v-bind:src="selectedImage"
-      spinner-color="white"
-      class="responsive"
-    />
+    <q-img v-bind:src="selectedImage" spinner-color="white" class="circle200" />
     <div class="font24 mt16" v-if="visible">{{ selectedName }}</div>
     <hr class="line" />
-    <div
-      class="mt16 font18"
-      :class="{ fontred: visible }"
-      v-on:click="random()"
-    >
-      {{ buttomText }}
+
+    <div class="mt16 font18 margin50" v-if="visible">
+      <q-btn
+        size="lg"
+        color="primary"
+        label="สุ่มอีกครั้ง"
+        class="full-width"
+        @click="random()"
+      />
     </div>
+    <router-link to="/" class="link">
+      <div class="mt16 font18 margin50" v-if="visible">
+        <q-btn
+          size="lg"
+          color="primary"
+          label="กลับหน้าแรก"
+          class="full-width"
+        />
+      </div>
+    </router-link>
     <q-banner class="bg-grey-3 ads"> ADS </q-banner>
   </div>
 </template>

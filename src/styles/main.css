@@ -13,8 +13,6 @@
   border-radius: 10px;
   width: auto;
   height: 40px;
-  margin-left: 50px;
-  margin-right: 50px;
   vertical-align: middle;
 }
 
@@ -35,9 +33,18 @@
   text-decoration: underline;
 }
 
-.responsive {
+.circle200{
   height: 200px;
   max-width: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.circle250{
+  height: 200px;
+  width: 200px;
   position: relative;
   overflow: hidden;
   border-radius: 50%;
@@ -88,3 +95,18 @@ hr.line {
 .font24 {
   font-size: 24px;
 }
+
+.font32 {
+  font-size: 32px;
+}
+
+.margin50 {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.marginradio {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
